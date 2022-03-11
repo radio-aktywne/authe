@@ -1,0 +1,35 @@
+dsn: memory
+
+serve:
+  public:
+    port: ${AUTHE_PORT:-21000}
+    base_url: ${AUTHE_WEBAUTH_PUBLIC_URL:-http://localhost:22000}/api
+  admin:
+    port: ${AUTHE_ADMIN_PORT:-21001}
+
+identity:
+  default_schema_url: file://./conf/user.schema.json
+  schemas:
+    - id: user
+      url: file://./conf/user.schema.json
+
+selfservice:
+  default_browser_return_url: ${AUTHE_WEBAUTH_PUBLIC_URL:-http://localhost:22000}/success
+  methods:
+    password:
+      enabled: true
+      config:
+        haveibeenpwned_enabled: false
+  flows:
+    login:
+      ui_url: ${AUTHE_WEBAUTH_PUBLIC_URL:-http://localhost:22000}/login
+    registration:
+      ui_url: ${AUTHE_WEBAUTH_PUBLIC_URL:-http://localhost:22000}/register
+    error:
+      ui_url: ${AUTHE_WEBAUTH_PUBLIC_URL:-http://localhost:22000}/error
+    settings:
+      ui_url: ${AUTHE_WEBAUTH_PUBLIC_URL:-http://localhost:22000}/settings
+
+courier:
+  smtp:
+    connection_uri: smtps://foo:bar@0.0.0.0:0/
