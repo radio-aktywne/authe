@@ -7,7 +7,8 @@ on:
       - main
     # trigger only on changes to the following files
     paths:
-      - "authe/src/**"
+      - "authe/conf/**"
+      - "authe/start.sh"
       - "Dockerfile"
       - ".github/workflows/docker-build.yml"
   pull_request:
@@ -16,7 +17,8 @@ on:
       - main
     # trigger only on changes to the following files
     paths:
-      - "authe/src/**"
+      - "authe/conf/**"
+      - "authe/start.sh"
       - "Dockerfile"
       - ".github/workflows/docker-build.yml"
 

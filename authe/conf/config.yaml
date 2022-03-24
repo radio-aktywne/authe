@@ -1,9 +1,9 @@
-dsn: memory
+dsn: cockroach://root@${AUTHE_DB_ADDRESS:-authe-db:22000}/defaultdb?sslmode=disable
 
 serve:
   public:
     port: ${AUTHE_PORT:-21000}
-    base_url: ${AUTHE_WEBAUTH_PUBLIC_URL:-http://localhost:22000}/api
+    base_url: ${AUTHE_WEBAUTH_PUBLIC_URL:-http://localhost:23000}/api
   admin:
     port: ${AUTHE_ADMIN_PORT:-21001}
 
@@ -14,7 +14,7 @@ identity:
       url: file://./conf/user.schema.json
 
 selfservice:
-  default_browser_return_url: ${AUTHE_WEBAUTH_PUBLIC_URL:-http://localhost:22000}/success
+  default_browser_return_url: ${AUTHE_WEBAUTH_PUBLIC_URL:-http://localhost:23000}/success
   methods:
     password:
       enabled: true
@@ -22,13 +22,13 @@ selfservice:
         haveibeenpwned_enabled: false
   flows:
     login:
-      ui_url: ${AUTHE_WEBAUTH_PUBLIC_URL:-http://localhost:22000}/login
+      ui_url: ${AUTHE_WEBAUTH_PUBLIC_URL:-http://localhost:23000}/login
     registration:
-      ui_url: ${AUTHE_WEBAUTH_PUBLIC_URL:-http://localhost:22000}/register
+      ui_url: ${AUTHE_WEBAUTH_PUBLIC_URL:-http://localhost:23000}/register
     error:
-      ui_url: ${AUTHE_WEBAUTH_PUBLIC_URL:-http://localhost:22000}/error
+      ui_url: ${AUTHE_WEBAUTH_PUBLIC_URL:-http://localhost:23000}/error
     settings:
-      ui_url: ${AUTHE_WEBAUTH_PUBLIC_URL:-http://localhost:22000}/settings
+      ui_url: ${AUTHE_WEBAUTH_PUBLIC_URL:-http://localhost:23000}/settings
 
 courier:
   smtp:

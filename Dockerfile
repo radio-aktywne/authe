@@ -16,7 +16,8 @@ USER ory
 
 ENV AUTHE_PORT=21000 \
     AUTHE_ADMIN_PORT=21001 \
-    AUTHE_WEBAUTH_PUBLIC_URL=http://localhost:22000 \
+    AUTHE_DB_ADDRESS=authe-db:22000 \
+    AUTHE_WEBAUTH_PUBLIC_URL=http://localhost:23000 \
     AUTHE_ALLOWED_RETURN_URLS=http://example.com,https://example.com
 
 EXPOSE 21000
