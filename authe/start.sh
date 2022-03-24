@@ -14,4 +14,5 @@ done
 
 export "SELFSERVICE_WHITELISTED_RETURN_URLS=$AUTHE_ALLOWED_RETURN_URLS"
 
-kratos serve --sqa-opt-out -c /app/conf/config.yaml
+kratos migrate sql --read-from-env --yes --config /app/conf/config.yaml
+kratos serve --sqa-opt-out --config /app/conf/config.yaml
