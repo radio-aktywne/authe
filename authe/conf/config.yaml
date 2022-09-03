@@ -8,7 +8,7 @@ serve:
     port: ${AUTHE_ADMIN_PORT:-21001}
 
 identity:
-  default_schema_url: file://./conf/user.schema.json
+  default_schema_id: user
   schemas:
     - id: user
       url: file://./conf/user.schema.json
