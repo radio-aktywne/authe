@@ -1,5 +1,12 @@
 dsn: cockroach://root@${AUTHE_DB_ADDRESS:-authe-db:22000}/defaultdb?sslmode=disable
 
+cookies:
+  domain: ${AUTHE_COOKIE_DOMAIN:-localhost}
+
+session:
+  cookie:
+    domain: ${AUTHE_COOKIE_DOMAIN:-localhost}
+
 serve:
   public:
     port: ${AUTHE_PORT:-23000}
