@@ -11,13 +11,11 @@ RUN chmod +x ./start.sh
 
 COPY ./authe/conf/ ./conf/
 
-RUN chown -R ory /app/* /app/conf/*
-USER ory
-
 ENV AUTHE_PORT=23000 \
     AUTHE_ADMIN_PORT=23001 \
     AUTHE_DB_ADDRESS=authe-db:22000 \
-    AUTHE_AUTHGATE_PUBLIC_URL=http://localhost:20000 \
+    AUTHE_DB_PASSWORD=password \
+    AUTHE_AUTHGATE_PUBLIC_URL=https://localhost:20000 \
     AUTHE_ALLOWED_RETURN_URLS=http://*.localhost,https://*.localhost,http://localhost,https://localhost \
     AUTHE_COOKIE_DOMAIN=localhost
 

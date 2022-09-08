@@ -1,4 +1,4 @@
-dsn: cockroach://root@${AUTHE_DB_ADDRESS:-authe-db:22000}/defaultdb?sslmode=disable
+dsn: cockroach://authe@${AUTHE_DB_ADDRESS:-authe-db:22000}/database?password=${AUTHE_DB_PASSWORD:-password}&sslmode=verify-full&sslrootcert=/etc/certs/ca.pem&sslcert=/etc/certs/client.cert.pem&sslkey=/etc/certs/client.key.pem
 
 cookies:
   domain: ${AUTHE_COOKIE_DOMAIN:-localhost}
@@ -10,9 +10,19 @@ session:
 serve:
   public:
     port: ${AUTHE_PORT:-23000}
-    base_url: ${AUTHE_AUTHGATE_PUBLIC_URL:-http://localhost:20000}/authe
+    base_url: ${AUTHE_AUTHGATE_PUBLIC_URL:-https://localhost:20000}/authe
+    tls:
+      cert:
+        path: /etc/certs/cert.pem
+      key:
+        path: /etc/certs/key.pem
   admin:
     port: ${AUTHE_ADMIN_PORT:-23001}
+    tls:
+      cert:
+        path: /etc/certs/cert.pem
+      key:
+        path: /etc/certs/key.pem
 
 identity:
   default_schema_id: user
@@ -21,7 +31,7 @@ identity:
       url: file://./conf/user.schema.json
 
 selfservice:
-  default_browser_return_url: ${AUTHE_AUTHGATE_PUBLIC_URL:-http://localhost:20000}/ui/success
+  default_browser_return_url: ${AUTHE_AUTHGATE_PUBLIC_URL:-https://localhost:20000}/ui/success
   methods:
     password:
       enabled: true
@@ -29,13 +39,13 @@ selfservice:
         haveibeenpwned_enabled: false
   flows:
     login:
-      ui_url: ${AUTHE_AUTHGATE_PUBLIC_URL:-http://localhost:20000}/ui/login
+      ui_url: ${AUTHE_AUTHGATE_PUBLIC_URL:-https://localhost:20000}/ui/login
     registration:
-      ui_url: ${AUTHE_AUTHGATE_PUBLIC_URL:-http://localhost:20000}/ui/register
+      ui_url: ${AUTHE_AUTHGATE_PUBLIC_URL:-https://localhost:20000}/ui/register
     error:
-      ui_url: ${AUTHE_AUTHGATE_PUBLIC_URL:-http://localhost:20000}/ui/error
+      ui_url: ${AUTHE_AUTHGATE_PUBLIC_URL:-https://localhost:20000}/ui/error
     settings:
-      ui_url: ${AUTHE_AUTHGATE_PUBLIC_URL:-http://localhost:20000}/ui/settings
+      ui_url: ${AUTHE_AUTHGATE_PUBLIC_URL:-https://localhost:20000}/ui/settings
 
 courier:
   smtp:
