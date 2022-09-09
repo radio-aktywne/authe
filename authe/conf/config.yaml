@@ -18,6 +18,7 @@ serve:
         path: /etc/certs/key.pem
   admin:
     port: ${AUTHE_ADMIN_PORT:-23001}
+    base_url: ${AUTHE_ADMIN_PUBLIC_URL:-https://localhost:23001}
     tls:
       cert:
         path: /etc/certs/cert.pem
