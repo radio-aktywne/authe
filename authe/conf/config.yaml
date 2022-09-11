@@ -32,21 +32,28 @@ identity:
       url: file://./conf/user.schema.json
 
 selfservice:
-  default_browser_return_url: ${AUTHE_AUTHGATE_PUBLIC_URL:-https://localhost:20000}/ui/success
+  default_browser_return_url: ${AUTHE_AUTHGATE_PUBLIC_URL:-https://localhost:20000}/ui
   methods:
+    link:
+      enabled: true
     password:
       enabled: true
       config:
         haveibeenpwned_enabled: false
   flows:
-    login:
-      ui_url: ${AUTHE_AUTHGATE_PUBLIC_URL:-https://localhost:20000}/ui/login
-    registration:
-      ui_url: ${AUTHE_AUTHGATE_PUBLIC_URL:-https://localhost:20000}/ui/register
     error:
       ui_url: ${AUTHE_AUTHGATE_PUBLIC_URL:-https://localhost:20000}/ui/error
+    login:
+      ui_url: ${AUTHE_AUTHGATE_PUBLIC_URL:-https://localhost:20000}/ui/login
+    recovery:
+      enabled: true
+      ui_url: ${AUTHE_AUTHGATE_PUBLIC_URL:-https://localhost:20000}/ui/recover
+    registration:
+      enabled: false
     settings:
       ui_url: ${AUTHE_AUTHGATE_PUBLIC_URL:-https://localhost:20000}/ui/settings
+    verification:
+      enabled: false
 
 courier:
   smtp:
